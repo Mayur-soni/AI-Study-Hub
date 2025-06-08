@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup | AI Study Hub</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-dark text-white">
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card p-4 text-dark" style="width: 350px;">
+            <center>{% if messages %}
+            {% for i in messages %}
+                <h6>{{ i }}</h6>
+            {% endfor %}
+                {% endif %}</center>
+            <h3 class="text-center">Sign Up</h3>
+            <form method="POST" action="insert">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" id="username" name="name" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password1" class="form-label">Password</label>
+                    <input type="password" id="password1" name="pass" class="form-control" required>
+                </div>
+<!--                <div class="mb-3">-->
+<!--                    <label for="password2" class="form-label">Confirm Password</label>-->
+<!--                    <input type="password" id="password2" name="password2" class="form-control" required>-->
+<!--                </div>-->
+                <button type="submit" class="btn btn-success w-100">Sign Up</button>
+            </form>
+            <p class="mt-3 text-center">
+                Already have an account? <a href="login">Login</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

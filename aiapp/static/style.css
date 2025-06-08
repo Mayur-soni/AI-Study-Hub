@@ -1,0 +1,75 @@
+/* ------------------------------
+   ✅ RESPONSIVE FIXES FOR YOUR CODE
+--------------------------------- */
+
+/* Default (Desktop View) - keep as is */
+.ai-section {
+    width: 25%;
+}
+
+.coding-section {
+    width: 75%;
+}
+
+.coding-container {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* --- ✅ Responsive (Tablet & Mobile) --- */
+@media (max-width: 992px) {
+    .container-fluid {
+        flex-direction: column;
+    }
+    .ai-section, .coding-section {
+        width: 100%;
+        height: auto;
+    }
+    .coding-container {
+        flex-direction: column;
+        padding: 15px;
+        gap: 15px;
+    }
+    .editor, .output {
+        width: 100%;
+    }
+    .expand-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 5px 10px;
+        font-size: 0.8rem;
+    }
+}
+
+/* --- ✅ Extra Small Devices --- */
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    .navbar-nav .nav-link {
+        margin-right: 8px;
+        font-size: 0.9rem;
+    }
+    .coding-container {
+        padding: 10px;
+        gap: 10px;
+    }
+    .editor textarea {
+        font-size: 0.9rem;
+    }
+    .output iframe {
+        height: 300px;
+    }
+    .expand-btn {
+        padding: 4px 8px;
+        font-size: 0.75rem;
+    }
+}
+
+/* Optional (Smooth resize) */
+.ai-section, .coding-section, .editor, .output, .container-fluid, .coding-container {
+    transition: all 0.3s ease;
+}
