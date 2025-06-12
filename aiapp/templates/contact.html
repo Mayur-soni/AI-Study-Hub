@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Us | IntellectAI</title>
+  <title>Contact | IntellectAI</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <style>
     :root {
@@ -98,61 +98,82 @@
       color: var(--primary-color);
     }
 
-    .about-section {
-      padding: 120px 0 60px;
+    .contact-section {
+      padding: 120px 0 80px;
       background-color: #f3f3fd;
-      text-align: center;
     }
 
-    .about-section h2 {
+    .contact-section h2 {
+      text-align: center;
       font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-
-    .about-section p {
-      max-width: 800px;
-      margin: 0 auto 30px;
-      font-size: 1.1rem;
-      color: var(--gray-color);
-    }
-
-    .team-section {
-      padding: 60px 0;
-      background: white;
-    }
-
-    .team-section h3 {
-      text-align: center;
-      font-size: 2rem;
       margin-bottom: 40px;
     }
 
-    .team-grid {
+    .contact-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      justify-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      align-items: start;
     }
 
-    .team-member {
-      text-align: center;
+    .contact-info {
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
-    .team-member img {
-      border-radius: 50%;
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      margin-bottom: 15px;
+    .contact-info h3 {
+      margin-bottom: 20px;
+      font-size: 1.25rem;
     }
 
-    .team-member h4 {
-      margin: 10px 0 5px;
+    .contact-info p {
+      margin: 10px 0;
+      color: var(--gray-color);
     }
 
-    .team-member p {
-      font-color: #698081 ;
-      font-size: 0.95rem;
+    .contact-info i {
+      margin-right: 10px;
+      color: var(--primary-color);
+    }
+
+    .contact-form {
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .contact-form form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    .contact-form button {
+      padding: 12px 20px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background-color: var(--secondary-color);
     }
 
     footer {
@@ -250,8 +271,8 @@
           <li><a href="/">Home</a></li>
           <li><a href="{% url 'courses' %}">Courses</a></li>
            <li><a href="{% url 'jobs_list' %}">Jobs</a></li>
-          <li><a href="about">About</a></li>
-          <li><a href="{% url 'contact' %}">Contact</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="contact">Contact</a></li>
         </ul>
       </nav>
       <div class="auth-buttons">
@@ -265,26 +286,25 @@
     </div>
   </header>
 
-  <section class="about-section" id="about">
+  <section class="contact-section" id="contact">
     <div class="container">
-      <h2>About IntellectAI</h2>
-      <p>
-        At IntellectAI, our mission is to make advanced artificial intelligence education accessible to everyone. Whether you're a beginner or an expert, we offer high-quality courses, resources, and tools to help you master AI, machine learning, and deep learning technologies.
-
-In addition to education, we empower your career by providing a dedicated Jobs section that connects learners with the latest AI job opportunities from leading companies around the world. You can not only learn AI here — but also launch your career through real-world job listings tailored for AI professionals.
-      </p>
-    </div>
-  </section>
-
-  <section class="team-section">
-    <div class="container">
-      <h3>Founder & Developer</h3>
-      <div class="team-grid">
-        <div class="team-member">
-          <img src="../static/assets/images/image.jpg" alt="Founder">
-          <h4>Mayur Baviskar</h4>
-          <p>Founder & web Developer</p>
-
+      <h2>Contact Us</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Get in Touch</h3>
+          <p><i class="fas fa-envelope"></i> mayurbaviskar309@gmail.com</p>
+          <p><i class="fas fa-phone"></i> +91 9974408826</p>
+          <p><i class="fas fa-map-marker-alt"></i> Ahmedabad, Gujarat</p>
+          <p>We're happy to answer your questions. Fill out the form and we’ll get back to you soon.</p>
+        </div>
+        <div class="contact-form">
+          <form action="#" method="post">
+            <input type="text" name="name" placeholder="Your Name" required />
+            <input type="email" name="email" placeholder="Your Email" required />
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
       </div>
     </div>
   </section>
@@ -318,7 +338,7 @@ In addition to education, we empower your career by providing a dedicated Jobs s
           <div class="social-icons">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href=""><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-youtube"></i></a>
           </div>

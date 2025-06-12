@@ -3,34 +3,318 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | AI Study Hub</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>Login | IntellectAI</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+ <!-- Link your CSS here -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Inherit styles from your signup page */
+        /* Include all :root, body, container, btn, header, footer, etc. styles here (or in a shared CSS file) */
+:root {
+    --primary-color: #6c63ff;
+    --secondary-color: #4d44db;
+    --accent-color: #ff6584;
+    --dark-color: #2d3748;
+    --light-color: #f7fafc;
+    --gray-color: #a0aec0;
+    --success-color: #48bb78;
+}
+
+        /* Basic layout styles if needed directly */
+        body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+    background-color: #fff;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn.primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn.primary-btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.btn.secondary-btn {
+    background-color: white;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.btn.secondary-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn.admin-btn {
+    background-color: var(--dark-color);
+    color: white;
+}
+
+.btn.admin-btn:hover {
+    background-color: #1a202c;
+}
+
+.btn.signup-btn {
+    background-color: var(--primary-color);
+    color: white;
+    margin-right: 10px;
+}
+
+.btn.login-btn {
+    background-color: transparent;
+    color: var(--dark-color);
+    border: 1px solid var(--dark-color);
+}
+
+.btn.course-btn {
+    background-color: var(--primary-color);
+    color: white;
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+section {
+    padding: 80px 0;
+}
+
+        .header {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    padding: 15px 0;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.logo i {
+    margin-right: 10px;
+    font-size: 1.8rem;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: var(--dark-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: var(--primary-color);
+}
+
+.auth-buttons {
+    display: flex;
+    align-items: center;
+}
+
+        .login-section {
+            display: flex;
+            justify-content: space-between;
+            padding: 100px 10%;
+            background: #f3f3fd;
+        }
+
+        .login-form {
+            flex: 1;
+            margin-right: 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .login-form h1 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .btn.primary-btn {
+            background-color: #7c3aed;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .signup-link {
+            margin-top: 10px;
+        }
+
+        .signup-link a {
+            color: #7c3aed;
+            text-decoration: none;
+        }
+
+        .login-benefits {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .login-benefits ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .login-benefits li {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .login-benefits i {
+            color: #22c55e;
+            margin-right: 10px;
+        }
+    </style>
 </head>
-<body class="bg-dark text-white">
-    <div class="container d-flex justify-content-center align-items-center vh-100">
-        <div class="card p-4 text-dark" style="width: 350px;">
-            {% if messages %}
-            {% for i in messages %}
-                <h6>{{ i }}</h6>
-            {% endfor %}
-            {% endif %}
-            <h3 class="text-center">Login</h3>
-            <form method="POST" action="verify">{% csrf_token %}
-                <div class="mb-3">
-                    <label for="username" class="form-label">Email</label>
-                    <input type="text" id="username" name="email" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" id="password" name="pass" class="form-control" required>
-                </div>
-                <button type="submit" class="btn btn-primary w-100">Login</button>
-            </form>
-            <p class="mt-3 text-center">
-                Don't have an account? <a href="signup">Sign up</a>
-            </p>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="logo">
+            <i class="fas fa-brain"></i>
+            <span>IntellectAI</span>
         </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'courses' %}">Courses</a></li>
+                <li><a href="{% url 'jobs_list' %}">Jobs</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+    {% if request.session.login_email %}
+      <a href="{% url 'logout' %}" class="btn signup-btn">Logout</a>
+    {% else %}
+      <a href="{% url 'signup' %}" class="btn signup-btn">Sign Up</a>
+      <a href="{% url 'login' %}" class="btn login-btn">Login</a>
+    {% endif %}
+</div>
     </div>
+</header>
+
+<section class="login-section" id="login">
+    <div class="login-form">
+        {% if messages %}
+        {% for i in messages %}
+            <h6>{{ i }}</h6>
+        {% endfor %}
+        {% endif %}
+        <h1>LOGIN</h1>
+        <form action="{% url 'logincheck' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="EMAIL" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="PAS" required>
+            </div>
+            <button type="submit" class="btn primary-btn">Login</button>
+        </form>
+        <p class="signup-link">Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
+    </div>
+    <div class="login-benefits">
+        <h3>Why Login?</h3>
+        <ul>
+            <li><i class="fas fa-check"></i> Track your course progress</li>
+            <li><i class="fas fa-check"></i> Access premium content</li>
+            <li><i class="fas fa-check"></i> Save your learning history</li>
+            <li><i class="fas fa-check"></i> Personalized dashboard</li>
+            <li><i class="fas fa-check"></i> Join AI Study Hub community</li>
+        </ul>
+    </div>
+</section>
+
+
 
 </body>
 </html>

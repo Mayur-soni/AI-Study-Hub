@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Output</title>
+    <style>
+        {{ request.GET.css|safe }}
+    </style>
+</head>
+<body>
+    {{ request.GET.html|safe }}
+    <script>
+        {{ request.GET.js|safe }}
+    </script>
+</body>
+</html>

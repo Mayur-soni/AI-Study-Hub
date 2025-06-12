@@ -3,42 +3,504 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup | AI Study Hub</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>Sign Up | IntellectAI</title>
+    <link rel="stylesheet" href="static/style.css"> <!-- Link your existing CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+
+        :root {
+    --primary-color: #6c63ff;
+    --secondary-color: #4d44db;
+    --accent-color: #ff6584;
+    --dark-color: #2d3748;
+    --light-color: #f7fafc;
+    --gray-color: #a0aec0;
+    --success-color: #48bb78;
+}
+
+        /* Basic layout styles if needed directly */
+        body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+    background-color: #fff;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn.primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn.primary-btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.btn.secondary-btn {
+    background-color: white;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.btn.secondary-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn.admin-btn {
+    background-color: var(--dark-color);
+    color: white;
+}
+
+.btn.admin-btn:hover {
+    background-color: #1a202c;
+}
+
+.btn.signup-btn {
+    background-color: var(--primary-color);
+    color: white;
+    margin-right: 10px;
+}
+
+.btn.login-btn {
+    background-color: transparent;
+    color: var(--dark-color);
+    border: 1px solid var(--dark-color);
+}
+
+.btn.course-btn {
+    background-color: var(--primary-color);
+    color: white;
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+section {
+    padding: 80px 0;
+}
+
+        .header {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    padding: 15px 0;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.logo i {
+    margin-right: 10px;
+    font-size: 1.8rem;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: var(--dark-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: var(--primary-color);
+}
+
+.auth-buttons {
+    display: flex;
+    align-items: center;
+}
+
+        .signup-section {
+            display: flex;
+            justify-content: space-between;
+            padding: 100px 10%;
+            background: #f3f3fd;
+        }
+
+        .signup-form {
+            flex: 1;
+            margin-right: 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .signup-form h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .btn.primary-btn {
+            background-color: #7c3aed;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .login-link {
+            margin-top: 10px;
+        }
+
+        .login-link a {
+            color: #7c3aed;
+            text-decoration: none;
+        }
+
+        .signup-benefits {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .signup-benefits ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .signup-benefits li {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .signup-benefits i {
+            color: #22c55e;
+            margin-right: 10px;
+        }
+
+    /* Footer Styles */
+.footer {
+    background-color: var(--dark-color);
+    color: white;
+    padding: 60px 0 0;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.footer-logo i {
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+.footer-links h4,
+.footer-contact h4,
+.footer-social h4 {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.footer-links ul,
+.footer-contact ul {
+    list-style: none;
+}
+
+.footer-links ul li,
+.footer-contact ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links ul li a,
+.footer-contact ul li a {
+    color: var(--gray-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover,
+.footer-contact ul li a:hover {
+    color: white;
+}
+
+.footer-contact ul li i {
+    margin-right: 10px;
+    color: var(--primary-color);
+    width: 20px;
+    text-align: center;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--gray-color);
+    font-size: 0.9rem;
+}
+
+.legal-links {
+    display: flex;
+    gap: 20px;
+}
+
+.legal-links a {
+    color: var(--gray-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.legal-links a:hover {
+    color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .hero .container,
+    .signup-section .container {
+        flex-direction: column;
+    }
+
+    .hero-content {
+        padding-right: 0;
+        margin-bottom: 40px;
+    }
+
+    .signup-form {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .header .container {
+        flex-direction: column;
+    }
+
+    .logo {
+        margin-bottom: 15px;
+    }
+
+    .navbar {
+        margin-bottom: 15px;
+    }
+
+    .auth-buttons {
+        margin-top: 15px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    section {
+        padding: 60px 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar ul li {
+        margin: 5px 0;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .legal-links {
+        justify-content: center;
+    }
+}
+
+
+    </style>
 </head>
-<body class="bg-dark text-white">
-    <div class="container d-flex justify-content-center align-items-center vh-100">
-        <div class="card p-4 text-dark" style="width: 350px;">
-            <center>{% if messages %}
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <span>IntellectAI</span>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="{% url 'courses' %}">Courses</a></li>
+                     <li><a href="{% url 'jobs_list' %}">Jobs</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+    {% if request.session.login_email %}
+      <a href="{% url 'logout' %}" class="btn signup-btn">Logout</a>
+    {% else %}
+      <a href="{% url 'signup' %}" class="btn signup-btn">Sign Up</a>
+      <a href="{% url 'login' %}" class="btn login-btn">Login</a>
+    {% endif %}
+</div>
+        </div>
+    </header>
+
+    <section class="signup-section" id="signup">
+        <div class="signup-form">
+            {% if messages %}
             {% for i in messages %}
                 <h6>{{ i }}</h6>
             {% endfor %}
-                {% endif %}</center>
-            <h3 class="text-center">Sign Up</h3>
-            <form method="POST" action="insert">
-                {% csrf_token %}
-                <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" id="username" name="name" class="form-control" required>
+            {% endif %}
+            <center><h1 class="text-center">SIGNUP</h1></center>
+            <form method="POST" action="signupuser">{% csrf_token %}
+<!--            <h2>Join AI Study Hub Today</h2>-->
+            <form action="/admin/aiapp/signup/" method="post">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="NAME" required>
                 </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" id="email" name="email" class="form-control" required>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="EMAIL" required>
                 </div>
-                <div class="mb-3">
-                    <label for="password1" class="form-label">Password</label>
-                    <input type="password" id="password1" name="pass" class="form-control" required>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="PAS" required>
                 </div>
-<!--                <div class="mb-3">-->
-<!--                    <label for="password2" class="form-label">Confirm Password</label>-->
-<!--                    <input type="password" id="password2" name="password2" class="form-control" required>-->
-<!--                </div>-->
-                <button type="submit" class="btn btn-success w-100">Sign Up</button>
+                <button type="submit" class="btn primary-btn">Create Account</button>
             </form>
-            <p class="mt-3 text-center">
-                Already have an account? <a href="login">Login</a>
-            </p>
+            <p class="login-link">Already have an account? <a href="login">Login</a></p>
         </div>
-    </div>
+        <div class="signup-benefits">
+            <h3>What you'll get:</h3>
+            <ul>
+                <li><i class="fas fa-check"></i> Access to all courses</li>
+                <li><i class="fas fa-check"></i> Downloadable resources</li>
+                <li><i class="fas fa-check"></i> Certificate of completion</li>
+                <li><i class="fas fa-check"></i> 24/7 support</li>
+                <li><i class="fas fa-check"></i> Community access</li>
+            </ul>
+        </div>
+    </section>
+
+
+
 </body>
 </html>

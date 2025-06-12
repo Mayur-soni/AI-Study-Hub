@@ -3,417 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Coding Editor</title>
-    <link rel="stylesheet" href="static/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <style>
-        body, html {
-            background: linear-gradient(135deg, #1e2a3a, #303952);
-            background-color: #121212;
-            color: #eae8e8;
-            height: 100%;
-            margin: 0;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-<!--        .navbar {-->
-<!--            background: linear-gradient(135deg, #3a6186, #89253e);-->
-<!--            color: white;-->
-<!--            padding: 15px;-->
-<!--        }-->
-        .navbar {
-            background: linear-gradient(135deg, #1e2a3a, #303952);
-            color: white;
-            padding: 15px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-}
-        .navbar-nav {
-            margin: auto;
-        }
-        .navbar-nav .nav-link {
-            color: white;
-            font-weight: bold;
-            margin-right: 15px;
-        }
-        .navbar-brand {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
-        }
-        .navbar .btn {
-            font-weight: bold;
-            border-radius: 20px;
-            padding: 5px 15px;
-        }
-        .container-fluid {
-            display: flex;
-            flex-grow: 1;
-            overflow: hidden;
-        }
-
-        .ai-section, .coding-section {
-            height: 100%;
-            overflow: hidden;
-            padding: 10px;
-        }
-        .ai-section {
-            width: 25%;
-            display: flex;
-            flex-direction: column;
-        }
-        .output-box {
-            flex-grow: 1;
-            background-color: #252525;
-            color: white;
-            padding: 10px;
-            border-radius: 10px;
-            overflow-y: auto;
-        }
-        .chat-bubble {
-            max-width: 70%;
-            padding: 10px 15px;
-            border-radius: 20px;
-            position: relative;
-            word-wrap: break-word;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        .chat-bubble.user {
-            align-self: flex-end;
-            background: #007bff;
-            border-bottom-right-radius: 0;
-        }
-
-        .chat-bubble.ai {
-            align-self: flex-start;
-            background: #444;
-            border-bottom-left-radius: 0;
-        }
-
-        .chat-input {
-            display: flex;
-            padding: 10px;
-            background: #2b2b3b;
-            border-top: 1px solid #444;
-        }
-        .search-bar {
-            display: flex;
-            align-items: center;
-            background-color: #252525;
-            padding: 10px;
-            border-radius: 10px;
-        }
-        .search-bar input {
-            flex-grow: 1;
-            background: transparent;
-            border: none;
-            color: white;
-            outline: none;
-            padding: 5px;
-        }
-        .search-bar button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 20px;
-            background: #28a745;
-            color: #fff;
-            cursor: pointer;
-        }
-        .coding-section {
-            width: 75%;
-            display: flex;
-            flex-direction: column;
-        }
-        .coding-container {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
-            background: #1e1e1e;
-            padding: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-        }
-
-        .editor, .output {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        .editor textarea {
-            flex-grow: 1;
-            width: 100%;
-            background: #252525;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            resize: none;
-        }
-        .output iframe {
-            flex-grow: 1;
-            width: 100%;
-            border: none;
-            background: white;
-        }
-        .expand-btn {
-            position: absolute;
-            top: 96px;
-            right: 50px;
-            background: #28a745;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        .full-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 1000;
-            background: black;
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-        }
-        footer {
-            background: linear-gradient(135deg, #3a6186, #89253e);
-            color: white;
-            text-align: center;
-            padding: 12px;
-            margin-top: 15px;
-            bottom: 20px;
-            width: 100%;
-            font-size: 1rem;
-            font-weight: bold;
-        }
-        .typing {
-            font-style: italic;
-            opacity: 0.6;
-            margin-top: 5px;
-        }
-         .toggle-mode {
-            text-align: center;
-            margin-top: 10px;
-            cursor: pointer;
-        }
-    </style>
-
+    <title>IntellectAI - Learn Artificial Intelligence</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg px-3">
-        <a class="navbar-brand" href="">AI Study Hub</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="internship">Internship</a></li>
-                <li class="nav-item"><a class="nav-link" href="project">Projects</a></li>
-                <li class="nav-item"><a class="nav-link" href="about">About</a></li>
-            </ul>
-
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <span>IntellectAI</span>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="{% url 'courses' %}">Courses</a></li>
+                    <li><a href="{% url 'jobs_list' %}">Jobs</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+    {% if request.session.login_email %}
+      <a href="{% url 'logout' %}" class="btn signup-btn">Logout</a>
+    {% else %}
+      <a href="{% url 'signup' %}" class="btn signup-btn">Sign Up</a>
+      <a href="{% url 'login' %}" class="btn login-btn">Login</a>
+    {% endif %}
+</div>
         </div>
-        {% if request.session.login_email %}
-            <a href="logout" class="btn btn-light me-2">logout</a>
-            <script>
-              alert("Welcome, {{ request.session.login_name }}");
-            </script>
-        {% else %}
-            <a href="login" class="btn btn-light me-2">Login</a>
-            <a href="signup" class="btn btn-primary me-3">Sign Up</a>
-        {% endif %}
-    </nav>
+    </header>
 
-    <div class="container-fluid">
-        <!-- AI GPT Section -->
-        <div class="ai-section">
-            <h4>AI GPT</h4>
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
 
-            <div id="aiOutput" class="output-box">AI Output will be shown here...</div>
-            <div class="search-bar mt-2">
-                <input type="text" id="askInput" placeholder="Ask anything..." onkeydown="handleKey(event)">
-                <button onclick="showAIOutput()" <i class="fas fa-paper-plane"></i></button>
+    <section class="hero" id="home">
+    <div class="container mx-auto px-4 py-12 flex flex-col md:flex-row items-center justify-between gap-8">
 
+        <!-- Left side: Text content -->
+        <div class="hero-content md:w-1/2 text-center md:text-left">
+            <h1 class="text-4xl font-bold mb-4">
+                Master Artificial Intelligence with Our Comprehensive Courses
+            </h1>
+            <p class="text-gray-600 mb-6">
+                Join thousands of students learning cutting-edge AI technologies from industry experts.
+            </p>
+            <div class="cta-buttons flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                <form method="POST" action="/login/logincheck/">
+                    {% csrf_token %}
+                      <input type="hidden" name="username" value="{{ username }}">
+                      <input type="hidden" name="password" value="{{ password }}">
+                {% if request.session.login_id %}
+    <!-- User is logged in: Go to coding page -->
+                <a href="{% url 'coding' %}" class="btn primary-btn bg-violet-600 hover:bg-violet-700 text-white px-6 py-3 rounded-lg font-semibold">Start Coding Now</a>
+                {% else %}
+    <!-- User is not logged in: Redirect to signup -->
+                <a href="{% url 'signup' %}" class="btn primary-btn bg-violet-600 hover:bg-violet-700 text-white px-6 py-3 rounded-lg font-semibold">Start Coding Now</a>
+                {% endif %}
+                <a href="{% url 'courses' %}" class="btn secondary-btn border border-violet-600 text-violet-600 px-6 py-3 rounded-lg font-semibold hover:bg-violet-50">Explore Courses</a>
             </div>
         </div>
 
-        <!-- Coding Section -->
-        <div class="coding-section">
-            <div class="coding-container">
-                <!-- Code Editor -->
-                <div class="editor">
-                    <h3>AI-Powered Coding Compiler</h3>
-                    <label for="language">Language:</label>
-                    <select id="language" class="form-select w- mb-2">
-                        <option value="html">HTML</option>
-                        <option value="css">CSS</option>
-                        <option value="javascript">JavaScript</option>
-                        <option value="python">Python</option>
-                    </select>
-                    <textarea id="codeInput" class="form-control" rows="10" placeholder="Write your code here..."></textarea>
-                    <button class="btn btn-success mt-2" onclick="runCode()">Run</button>
-                </div>
-
-                <!-- Output Section -->
-                <div id="outputBox" class="output">
-                    <h4>Output:</h4>
-                    <button class="expand-btn" onclick="toggleFullScreen()">🔍 Expand</button>
-                    <!-- <button class="explore-btn" onclick="alert('Explore feature coming soon!')">🔎 Explore</button> -->
-
-                    <iframe id="outputFrame"></iframe>
-                </div>
-            </div>
+        <!-- Right side: Image -->
+        <div class="md:w-1/2 flex justify-center">
+            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                 alt="AI Technology"
+                 class="w-full max-w-sm h-auto rounded-xl shadow-lg transition-opacity duration-700 opacity-0"
+                 onload="this.classList.remove('opacity-0')">
         </div>
     </div>
-    <footer>
-        &copy; 2025 AI Study Hub | <a href="#" style="color: white; text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: white; text-decoration: none;">Terms</a>
+</section>
+
+
+    <section class="features">
+        <div class="container">
+            <h2>Why Choose IntellectAI?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Expert Instructors</h3>
+                    <p>Learn from industry professionals with years of experience in AI and machine learning.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Hands-on Projects</h3>
+                    <p>Apply your knowledge with real-world projects and build an impressive portfolio.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Community Support</h3>
+                    <p>Join a vibrant community of AI enthusiasts and get help when you need it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-brain"></i>
+                    <span>IntellectAI</span>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="">Home</a></li>
+                        <li><a href="{% url 'courses' %}">Courses</a></li>
+                        <li><a href="{% url 'jobs_list' %}">Jobs</a></li>
+                        <li><a href="{% url 'about' %}">About</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact" id="contact">
+                    <h4>Contact Us</h4>
+                    <ul>
+                      <li><i class="fas fa-envelope"></i>mayurbaviskar309@gmail.com</li>
+                      <li><i class="fas fa-phone"></i> +91 9974408826</li>
+                      <li><i class="fas fa-map-marker-alt"></i> Ahmedabad, Gujarat</li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 AI Study Hub. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
     </footer>
-    <script>
-
-
-     async function runCode() {
-        let code = document.getElementById("codeInput").value;
-        let lang = document.getElementById("language").value;
-        let outputFrame = document.getElementById("outputFrame");
-
-    if (lang === "html") {
-        outputFrame.contentDocument.open();
-        outputFrame.contentDocument.write(code);
-        outputFrame.contentDocument.close();
-    } else if (lang === "javascript") {
-        outputFrame.contentDocument.open();
-        outputFrame.contentDocument.write(`<script>${code}<\/script>`);
-        outputFrame.contentDocument.close();
-    } else if (lang === "css") {
-        outputFrame.contentDocument.open();
-        outputFrame.contentDocument.write(`<style>${code}<\/style>`);
-        outputFrame.contentDocument.close();
-    } else if (lang === "python") {
-        try {
-            let response = await fetch("http://127.0.0.1:8000/api/run-python/", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ code: code }),
-            });
-
-            let data = await response.json();
-            document.getElementById("outputFrame").contentDocument.body.innerHTML =
-                `<pre>${data.output}</pre>`;
-        } catch (error) {
-            document.getElementById("outputFrame").contentDocument.body.innerHTML =
-                `<pre>Error executing Python code.</pre>`;
-        }
-    } else {
-        alert("Execution for this language is not supported yet.");
-    }
-}
-
-
-function handleKey(event) {
-    if (event.key === "Enter") {
-        event.preventDefault();  // avoid form submit if inside form
-        showAIOutput();
-    }
-}
-
-         const localReplies = {
-            "hello": ["Hey! How can I help you?", "Hello there!", "Hi! What can I do for you?"],
-            "who are you?": ["I'm your friendly AI bot.", "I am just a simple AI.", "A simple AI at your service."],
-            "how are you?": ["I'm doing great, thanks!", "Feeling awesome in this digital world!", "As an AI, I don't feel, but thanks for asking!"],
-            "what is your name?": ["You can call me Smart AI.", "I'm Smart AI, your assistant.", "They call me Smart AI Bot."],
-            "what can you do?": ["I can answer your questions.", "I help you with simple tasks.", "I'm here to chat and assist you."],
-            "tell me a joke": ["Why don't scientists trust atoms? Because they make up everything!", "I would tell you a UDP joke, but you might not get it.", "Why did the computer get cold? Because it forgot to close its Windows!"],
-            "bye": ["Goodbye!", "See you soon!", "Take care, bye!"],
-            "thanks": ["You're welcome!", "No problem!", "Anytime!"],
-            "what is ai?": ["AI stands for Artificial Intelligence.", "AI means machines simulating human intelligence.", "It's the ability of machines to mimic human behavior."],
-            "what is your purpose?": ["To help you with basic information.", "I'm here to assist you.", "My purpose is to make your tasks easier."],
-            "good morning": ["Good morning! Have a great day!", "Morning! How can I help you today?"],
-            "good night": ["Good night! Sweet dreams!", "Good night! See you tomorrow."]
-        };
-
-        async function showAIOutput() {
-            let askInput = document.getElementById("askInput").value.trim();
-            let chatBox = document.getElementById("aiOutput");
-            if (askInput.trim() === "") return;
-
-            let userMessage = `<div class='text-end'><strong>You:</strong> ${askInput}</div>`;
-            chatBox.innerHTML += userMessage;
-            document.getElementById("askInput").value = "";
-
-
-
-            // Show typing...
-            let typing = document.createElement("div");
-            typing.className = "typing";
-            typing.innerText = "AI is typing...";
-            chatBox.appendChild(typing);
-            chatBox.scrollTop = chatBox.scrollHeight;
-
-            // Check for local replies
-            let userInput = askInput.toLowerCase();
-            let aiReply = "";
-
-            setTimeout(async () => {
-                typing.remove();
-
-                if (localReplies[userInput]) {
-                    let replies = localReplies[userInput];
-                    aiReply = replies[Math.floor(Math.random() * replies.length)];
-                    typingEffect(aiReply);
-                } else {
-                    try {
-                        let response = await fetch("http://127.0.0.1:8000/api/ai-chat/", {
-                            method: "POST",
-                            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                            body: new URLSearchParams({ message: askInput })
-                        });
-
-                        let data = await response.json();
-                        let aiResponseText = data.reply || "No response from AI.";
-                        typingEffect(aiResponseText);
-                    } catch (error) {
-                        typingEffect("Error fetching AI response.");
-                    }
-                }
-            }, 500);
-        }
-
-        function typingEffect(text) {
-            let chatBox = document.getElementById("aiOutput");
-            let aiBubble = document.createElement("div");
-            aiBubble.className = "chat-bubble ai";
-            chatBox.appendChild(aiBubble);
-
-
-
-            let index = 0;
-            function type() {
-                if (index < text.length) {
-                    aiBubble.innerHTML += text.charAt(index);
-                    index++;
-                    chatBox.scrollTop = chatBox.scrollHeight;
-                    setTimeout(type, 30);
-                }
-            }
-            type();
-        }
-
-
-
-        function toggleFullScreen() {
-            let outputBox = document.getElementById("outputBox");
-            if (outputBox.classList.contains("full-screen")) {
-                outputBox.classList.remove("full-screen");
-            } else {
-                outputBox.classList.add("full-screen");
-            }
-        }
-    </script>
 </body>
 </html>
