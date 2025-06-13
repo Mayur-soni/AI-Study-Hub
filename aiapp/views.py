@@ -7,7 +7,9 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.hashers import make_password
 from django.views.decorators.cache import never_cache
-from openai.resources.fine_tuning.jobs import jobs
+
+import openai
+
 
 from .models import Signup
 from .jobs import jobs  # ✅ This imports the list inside the module
