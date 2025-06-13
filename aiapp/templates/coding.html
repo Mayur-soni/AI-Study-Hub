@@ -14,24 +14,25 @@
         <button onclick="showTab('html')">HTML</button>
         <button onclick="showTab('css')">CSS</button>
         <button onclick="showTab('js')">JS</button>
-        <button onclick="showTab('python')">Python</button>
         <button onclick="runCode()">▶ Run</button>
       </div>
 
-      <textarea id="html" class="code-tab active" placeholder="Write HTML here..."></textarea>
-      <textarea id="css" class="code-tab" placeholder="Write CSS here..."></textarea>
-      <textarea id="js" class="code-tab" placeholder="Write JavaScript here..."></textarea>
-      <textarea id="python" class="code-tab" placeholder="Write Python here..."></textarea>
+      <textarea id="html" class="code-tab active" placeholder="Write HTML here...">
+<h1>Hello, AI Study Hub!</h1>
+      </textarea>
+      <textarea id="css" class="code-tab" placeholder="Write CSS here...">
+h1 { color: teal; text-align: center; }
+      </textarea>
+      <textarea id="js" class="code-tab" placeholder="Write JavaScript here...">
+console.log("Welcome to AI Study Hub!");
+      </textarea>
     </div>
-
-    <iframe id="output" class="output-frame"></iframe>
-    <pre id="python-output" style="display:none; background:#000; color:#0f0; padding:10px;"></pre>
 
     <!-- AI Assistant Section -->
     <div class="ai-container" id="ai-container">
       <div class="ai-header">
         <div class="ai-title">AI Assistant</div>
-        <div class="ai-close " id="ai-close-btn">−</div>
+        <div class="ai-close" id="ai-close-btn">−</div>
       </div>
       <div class="ai-messages" id="ai-messages">
         <div class="message bot-message">Hello! I’m here to help you with your code.</div>
@@ -46,4 +47,3 @@
   <script src="../static/script.js"></script>
 </body>
 </html>
-
